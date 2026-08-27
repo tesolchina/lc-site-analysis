@@ -292,6 +292,86 @@
             color: #28a745;
             font-weight: bold;
         }
+
+        /* Collapsible sections */
+        .collapsible {
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        .collapsible:hover {
+            background: #5a6fd8;
+        }
+        .collapsible:after {
+            content: '\002B';
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .collapsible.active:after {
+            content: '\2212';
+        }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: white;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 20px;
+        }
+        .collapsible-content.active {
+            max-height: 5000px;
+            transition: max-height 0.5s ease-in;
+        }
+        .collapsible-inner {
+            padding: 20px;
+        }
+        
+        /* Fix stats grid overflow */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            padding: 20px 15px;
+            min-width: 0;
+            overflow: hidden;
+        }
+        .stat-number {
+            font-size: 1.8em;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Fix table overflow */
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+        th, td {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Section spacing */
+        .section {
+            margin-bottom: 20px;
+        }
+
         .checklist li.pending::before {
             content: '○';
             color: #ffc107;
@@ -322,8 +402,11 @@
 
 
         <!-- Email Context -->
-        <div class="section" id="email-context">
-            <h2><span class="icon">📧</span> Project Context & Email Discussion</h2>
+        <button class="collapsible" id="email-context">
+            <span><span class="icon">📧</span> Project Context & Email Discussion</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             
             <div class="warning-box">
                 <h3>⚠️ Current Situation</h3>
@@ -415,9 +498,15 @@
             </div>
         </div>
 
+            </div>
+        </div>
+
         <!-- Executive Summary -->
-        <div class="section" id="overview">
-            <h2><span class="icon">📋</span> Executive Summary</h2>
+        <button class="collapsible" id="overview">
+            <span><span class="icon">📋</span> Executive Summary</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             <div class="highlight-box">
                 <p><strong>Goal:</strong> Migrate 300+ pages from WordPress to Adobe Experience Manager (AEM). <strong>Note:</strong> API access currently denied by ITO; manual GUI migration is the only approved approach. This proposal presents both scenarios for the new HoD review in October.</p>
                 <p style="margin-top: 10px;"><strong>Key Benefit:</strong> Reduce manual effort by 70-80% through programmatic migration.</p>
@@ -442,9 +531,15 @@
             </div>
         </div>
 
+            </div>
+        </div>
+
         <!-- Current State -->
-        <div class="section" id="current-state">
-            <h2><span class="icon">📊</span> Current State Analysis</h2>
+        <button class="collapsible" id="current-state">
+            <span><span class="icon">📊</span> Current State Analysis</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             
             <h3>WordPress Site Inventory</h3>
             <table>
@@ -525,9 +620,15 @@
             </table>
         </div>
 
+            </div>
+        </div>
+
         <!-- Architecture -->
-        <div class="section" id="architecture">
-            <h2><span class="icon">🏗️</span> Migration Architecture</h2>
+        <button class="collapsible" id="architecture">
+            <span><span class="icon">🏗️</span> Migration Architecture</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             <div class="flowchart">
                 <div class="flow-box">
                     <h4>WordPress API</h4>
@@ -552,9 +653,15 @@
             </div>
         </div>
 
+            </div>
+        </div>
+
         <!-- Phases -->
-        <div class="section" id="phases">
-            <h2><span class="icon">📅</span> Migration Phases</h2>
+        <button class="collapsible" id="phases">
+            <span><span class="icon">📅</span> Migration Phases</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             <div class="timeline">
                 <div class="timeline-item">
                     <span class="week">Week 1-2</span>
@@ -603,9 +710,15 @@
             </div>
         </div>
 
+            </div>
+        </div>
+
         <!-- Technical -->
-        <div class="section" id="technical">
-            <h2><span class="icon">⚙️</span> Technical Implementation</h2>
+        <button class="collapsible" id="technical">
+            <span><span class="icon">⚙️</span> Technical Implementation</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             
             <h3>Field Mapping (WordPress → AEM)</h3>
             <table>
@@ -678,9 +791,15 @@
             </table>
         </div>
 
+            </div>
+        </div>
+
         <!-- Flagged Pages -->
-        <div class="section" id="flagged">
-            <h2><span class="icon">🚩</span> Handling Flagged Pages (48 pages)</h2>
+        <button class="collapsible" id="flagged">
+            <span><span class="icon">🚩</span> Handling Flagged Pages (48 pages)</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             <div class="danger-box">
                 <h3>⚠️ These pages need proper content creation</h3>
                 <p>48 pages currently have minimal text and are essentially just PDF links or image galleries.</p>
@@ -733,9 +852,15 @@
             </div>
         </div>
 
+            </div>
+        </div>
+
         <!-- SEO -->
-        <div class="section" id="seo">
-            <h2><span class="icon">🔍</span> SEO Preservation</h2>
+        <button class="collapsible" id="seo">
+            <span><span class="icon">🔍</span> SEO Preservation</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             
             <h3>URL Structure</h3>
             <table>
@@ -786,9 +911,15 @@
             </table>
         </div>
 
+            </div>
+        </div>
+
         <!-- Timeline -->
-        <div class="section" id="timeline">
-            <h2><span class="icon">⏱️</span> Timeline & Resources</h2>
+        <button class="collapsible" id="timeline">
+            <span><span class="icon">⏱️</span> Timeline & Resources</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             
             <h3>Estimated Timeline: 6 weeks</h3>
             <div class="stats-grid">
@@ -845,9 +976,15 @@
             </table>
         </div>
 
+            </div>
+        </div>
+
         <!-- Cost -->
-        <div class="section" id="cost">
-            <h2><span class="icon">💰</span> Cost Estimate</h2>
+        <button class="collapsible" id="cost">
+            <span><span class="icon">💰</span> Cost Estimate</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             
             <h3>Scenario A: Manual Migration via AEM GUI (ITO Proposal)</h3>
             <div class="highlight-box">
@@ -983,9 +1120,15 @@
         </div>
 
 
+            </div>
+        </div>
+
         <!-- Man-Hour Estimates -->
-        <div class="section" id="manhours">
-            <h2><span class="icon">⏰</span> Man-Hour Estimates</h2>
+        <button class="collapsible" id="manhours">
+            <span><span class="icon">⏰</span> Man-Hour Estimates</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             
             <div class="highlight-box">
                 <h3>🤖 AI-Assisted Development</h3>
@@ -1245,9 +1388,15 @@
             </div>
         </div>
 
+            </div>
+        </div>
+
         <!-- Success Metrics -->
-        <div class="section">
-            <h2><span class="icon">🎯</span> Success Metrics</h2>
+        <button class="collapsible">
+            <span><span class="icon">🎯</span> Success Metrics</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             <div class="stats-grid">
                 <div class="stat-card">
                     <span class="stat-number">100%</span>
@@ -1269,9 +1418,15 @@
         </div>
 
 
+            </div>
+        </div>
+
         <!-- Email Timeline -->
-        <div class="section" id="email-timeline">
-            <h2><span class="icon">📅</span> Email Discussion Timeline</h2>
+        <button class="collapsible" id="email-timeline">
+            <span><span class="icon">📅</span> Email Discussion Timeline</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             <div class="timeline">
                 <div class="timeline-item">
                     <span class="week">Jun 16, 2026</span>
@@ -1336,9 +1491,15 @@
             </div>
         </div>
 
+            </div>
+        </div>
+
         <!-- Next Steps -->
-        <div class="section" id="next-steps">
-            <h2><span class="icon">✅</span> Next Steps</h2>
+        <button class="collapsible" id="next-steps">
+            <span><span class="icon">✅</span> Next Steps</span>
+        </button>
+        <div class="collapsible-content">
+            <div class="collapsible-inner">
             <div class="success-box">
                 <h3>Ready to proceed?</h3>
                 <p>Follow these steps to begin the AEM migration:</p>
@@ -1353,10 +1514,37 @@
             </ol>
         </div>
 
+            </div>
+        </div>
+
         <!-- Footer -->
         <div style="text-align: center; color: white; margin-top: 40px; padding: 20px;">
             <p>Generated by LC Website Analysis Tool | <a href="index.html" style="color: white; text-decoration: underline;">← Back to Site Analysis</a></p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var coll = document.getElementsByClassName('collapsible');
+            for (var i = 0; i < coll.length; i++) {
+                coll[i].addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        content.classList.remove('active');
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.classList.add('active');
+                    }
+                });
+            }
+            
+            // Auto-expand first section
+            if (coll.length > 0) {
+                coll[0].click();
+            }
+        });
+    </script>
 </body>
 </html>
