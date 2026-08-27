@@ -320,11 +320,106 @@
             <a href="#next-steps">Next Steps</a>
         </div>
 
+
+        <!-- Email Context -->
+        <div class="section" id="email-context">
+            <h2><span class="icon">📧</span> Project Context & Email Discussion</h2>
+            
+            <div class="warning-box">
+                <h3>⚠️ Current Situation</h3>
+                <p><strong>From Simon's email to Ben (Aug 27, 2026):</strong></p>
+                <p style="font-style: italic; margin: 10px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                    "Thanks for the phone call. As we discussed, the proposed budget for migrating the website and future website maintenance will place extra financial burden on the LC. Given the expected change of leadership, our current HoD is disinclined to commit to the proposed plan. We need to wait for the new HoD to review the case in Oct. Meanwhile, I suggest we revisit the possibility of populating contents via AEM API."
+                </p>
+            </div>
+
+            <h3>Key Stakeholders</h3>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                </tr>
+                <tr>
+                    <td>Simon H WANG</td>
+                    <td>LC Project Lead</td>
+                    <td>simonwang@hkbu.edu.hk</td>
+                </tr>
+                <tr>
+                    <td>Ben LEE</td>
+                    <td>ITO</td>
+                    <td>bentplee@hkbu.edu.hk</td>
+                </tr>
+                <tr>
+                    <td>Zixin HUANG (Esther)</td>
+                    <td>LC Team</td>
+                    <td>estherhuang@hkbu.edu.hk</td>
+                </tr>
+                <tr>
+                    <td>Jonathan TAM</td>
+                    <td>ITO</td>
+                    <td>jonathan_tam@hkbu.edu.hk</td>
+                </tr>
+                <tr>
+                    <td>Roy LAU</td>
+                    <td>ITO</td>
+                    <td>roy_lau@hkbu.edu.hk</td>
+                </tr>
+                <tr>
+                    <td>Don Ho</td>
+                    <td>Adobe Technical Account Manager</td>
+                    <td>donho@adobe.com</td>
+                </tr>
+            </table>
+
+            <h3>ITO Charging Framework (from Ben's email, Aug 5, 2026)</h3>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>Setup Charge (Large)</td>
+                    <td>HK$3,400</td>
+                    <td>Fixed initial fee</td>
+                </tr>
+                <tr>
+                    <td>Pages requiring new design layout</td>
+                    <td>HK$3,400 / page</td>
+                    <td>~55 pages identified</td>
+                </tr>
+                <tr>
+                    <td>Pages requiring content migration only</td>
+                    <td>HK$340 / page</td>
+                    <td>1/10th of standard rate</td>
+                </tr>
+                <tr>
+                    <td>Annual Maintenance (Large)</td>
+                    <td>HK$40,800 / year</td>
+                    <td>Shared operational cost</td>
+                </tr>
+            </table>
+
+            <div class="danger-box">
+                <h3>🚫 API Access Denied</h3>
+                <p><strong>From Ben's email (July 30, 2026):</strong> "Unfortunately, the API approach is not supported. However, we would be happy to line up an Adobe expert to assist with any further technical inquiries you may have."</p>
+                <p style="margin-top: 10px;"><strong>Current Status:</strong> LC has GUI access to AEM staging server, but no API access. Content Fragment Model creation permissions are also pending.</p>
+            </div>
+
+            <h3>AEM Staging Server Access</h3>
+            <div class="highlight-box">
+                <p><strong>URL:</strong> <a href="https://author-p33398-e120038.adobeaemcloud.com/sites.html/content/lc/en/about-lc" target="_blank">https://author-p33398-e120038.adobeaemcloud.com/sites.html/content/lc/en/about-lc</a></p>
+                <p><strong>Users with access:</strong> Simon, Juanjuan LYU, Zixin HUANG (Esther)</p>
+                <p><strong>Requested additional accounts:</strong> 25116201g@hkbu.edu.hk, bibinur@hkbu.edu.hk</p>
+            </div>
+        </div>
+
         <!-- Executive Summary -->
         <div class="section" id="overview">
             <h2><span class="icon">📋</span> Executive Summary</h2>
             <div class="highlight-box">
-                <p><strong>Goal:</strong> Migrate 300+ pages from WordPress to Adobe Experience Manager (AEM) using automated API-driven migration.</p>
+                <p><strong>Goal:</strong> Migrate 300+ pages from WordPress to Adobe Experience Manager (AEM). <strong>Note:</strong> API access currently denied by ITO; manual GUI migration is the only approved approach. This proposal presents both scenarios for the new HoD review in October.</p>
                 <p style="margin-top: 10px;"><strong>Key Benefit:</strong> Reduce manual effort by 70-80% through programmatic migration.</p>
             </div>
             <div class="stats-grid">
@@ -802,7 +897,7 @@
                 <p>With AI vibe coding, development work is measured in <strong>minutes, not hours</strong>. The estimates below reflect actual hands-on time with AI assistance.</p>
             </div>
 
-            <h3>Scenario A: Manual Migration via AEM GUI</h3>
+            <h3>Scenario A: Manual Migration via AEM GUI (Current ITO-Approved Approach)</h3>
             <table>
                 <tr>
                     <th>Task</th>
@@ -883,7 +978,7 @@
                 </tr>
             </table>
 
-            <h3>Scenario B: Programming Migration via API (AI-Assisted)</h3>
+            <h3>Scenario B: Programming Migration via API (Proposed - Pending Adobe/ITO Approval)</h3>
             <table>
                 <tr>
                     <th>Task</th>
@@ -977,6 +1072,11 @@
                     <td>~3 days @ 8 hrs/day</td>
                 </tr>
             </table>
+
+            <div class="warning-box">
+                <h3>⚠️ Current Status</h3>
+                <p><strong>API access is currently not supported by ITO.</strong> The manual GUI approach is the only approved method. However, given the cost concerns raised by the current HoD, we recommend revisiting the API approach with Adobe experts when the new HoD reviews the case in October.</p>
+            </div>
 
             <div class="success-box">
                 <h3>⚡ Time Savings with API + AI</h3>
@@ -1073,6 +1173,74 @@
             </div>
         </div>
 
+
+        <!-- Email Timeline -->
+        <div class="section" id="email-timeline">
+            <h2><span class="icon">📅</span> Email Discussion Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="week">Jun 16, 2026</span>
+                    <h3>Esther requests Content Fragment Model</h3>
+                    <p>Esther emails Yvonne about using Content Fragment Models for consistent course/activity pages.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Jun 18, 2026</span>
+                    <h3>Roy adds Adobe expert (Don Ho)</h3>
+                    <p>Roy adds Don Ho from Adobe to the email loop to discuss CFM requirements.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Jun 20, 2026</span>
+                    <h3>Simon requests API access</h3>
+                    <p>Simon requests both GUI and API access to AEM platform, referencing the access request note.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Jun 25, 2026</span>
+                    <h3>Simon follows up on API credentials</h3>
+                    <p>Simon emphasizes need for API credentials to test and prepare specific questions.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Jul 3, 2026</span>
+                    <h3>Jonathan explains Adobe response</h3>
+                    <p>Jonathan explains that Adobe denied API access, which is why a call was requested.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Jul 26, 2026</span>
+                    <h3>Simon offers to meet</h3>
+                    <p>Simon offers to meet anytime to discuss the situation.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Jul 27, 2026</span>
+                    <h3>Jonathan coordinates with Adobe</h3>
+                    <p>Jonathan asks Ben to coordinate with Adobe's expert for a meeting.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Jul 30, 2026</span>
+                    <h3>Ben confirms API not supported</h3>
+                    <p>Ben confirms API approach is not supported, but offers Adobe expert assistance. Also confirms staging server access.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Jul 30, 2026</span>
+                    <h3>Esther requests CFM permissions</h3>
+                    <p>Esther clarifies they need Content Fragment Model creation permissions, not just API access.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Jul 30, 2026</span>
+                    <h3>Simon requests additional accounts</h3>
+                    <p>Simon requests two more AEM accounts for manual migration work.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Aug 5, 2026</span>
+                    <h3>Ben provides charging framework</h3>
+                    <p>Ben outlines the ITO charging framework: HK$3,400 setup + HK$3,400/page for new design + HK$340/page for migration + HK$40,800/year maintenance.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="week">Aug 27, 2026</span>
+                    <h3>Simon raises budget concerns</h3>
+                    <p>Simon emails Ben about budget concerns and HoD's reluctance to commit. Suggests revisiting API approach.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Next Steps -->
         <div class="section" id="next-steps">
             <h2><span class="icon">✅</span> Next Steps</h2>
@@ -1081,14 +1249,12 @@
                 <p>Follow these steps to begin the AEM migration:</p>
             </div>
             <ol style="font-size: 1.1em; line-height: 2;">
-                <li><strong>Approve proposal</strong> — LC management + IT review</li>
-                <li><strong>Set up AEM dev environment</strong> — IT + AEM admin</li>
-                <li><strong>Define Content Fragment Models</strong> — Content architect</li>
-                <li><strong>Develop migration script</strong> — Developer</li>
-                <li><strong>Pilot migration</strong> — 10 test pages</li>
-                <li><strong>Full migration</strong> — All 300 pages</li>
-                <li><strong>Cutover</strong> — DNS switch</li>
-                <li><strong>Post-migration support</strong> — 1 month</li>
+                <li><strong>Wait for new HoD review</strong> — October 2026</li>
+                <li><strong>Present both scenarios</strong> — Manual GUI vs API + AI</li>
+                <li><strong>Request Adobe expert meeting</strong> — Discuss API feasibility</li>
+                <li><strong>If API approved:</strong> Proceed with automated migration (25 hrs)</li>
+                <li><strong>If API denied:</strong> Proceed with manual migration (188 hrs) or reduce scope</li>
+                
             </ol>
         </div>
 
