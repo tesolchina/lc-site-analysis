@@ -848,6 +848,12 @@
         <!-- Cost -->
         <div class="section" id="cost">
             <h2><span class="icon">💰</span> Cost Estimate</h2>
+            
+            <h3>Scenario A: Manual Migration via AEM GUI (ITO Proposal)</h3>
+            <div class="highlight-box">
+                <p><strong>Source:</strong> Ben LEE, ITO (email, Aug 5, 2026)</p>
+                <p>This is the official ITO charging framework for the LC website migration project.</p>
+            </div>
             <table class="cost-table">
                 <tr>
                     <th>Item</th>
@@ -855,36 +861,125 @@
                     <th>Notes</th>
                 </tr>
                 <tr>
-                    <td>AEM licensing</td>
-                    <td>Existing</td>
-                    <td>HKBU institutional</td>
+                    <td>Setup Charge (Large)</td>
+                    <td>3,400</td>
+                    <td>Fixed initial fee</td>
                 </tr>
                 <tr>
-                    <td>Development</td>
-                    <td>~80,000</td>
-                    <td>4 weeks @ 20k/week</td>
+                    <td>Pages requiring new design layout (~55 pages)</td>
+                    <td>187,000</td>
+                    <td>HK$3,400 × 55 pages</td>
                 </tr>
                 <tr>
-                    <td>Content creation</td>
-                    <td>~30,000</td>
-                    <td>48 pages @ ~600/page</td>
+                    <td>Pages requiring content migration only (~245 pages)</td>
+                    <td>83,300</td>
+                    <td>HK$340 × 245 pages (1/10th rate)</td>
                 </tr>
                 <tr>
-                    <td>Testing/QA</td>
-                    <td>~20,000</td>
-                    <td>1 week</td>
-                </tr>
-                <tr>
-                    <td>Contingency</td>
-                    <td>~20,000</td>
-                    <td>15% buffer</td>
+                    <td>Annual Maintenance (Large)</td>
+                    <td>40,800 / year</td>
+                    <td>Shared operational cost</td>
                 </tr>
                 <tr class="cost-total">
-                    <td><strong>Total</strong></td>
-                    <td><strong>~150,000</strong></td>
-                    <td></td>
+                    <td><strong>Year 1 Total</strong></td>
+                    <td><strong>~314,500</strong></td>
+                    <td>Setup + migration + 1st year maintenance</td>
+                </tr>
+                <tr class="cost-total">
+                    <td><strong>Ongoing Annual</strong></td>
+                    <td><strong>40,800 / year</strong></td>
+                    <td>Maintenance only</td>
                 </tr>
             </table>
+
+            <h3>Scenario B: Programming Migration via API (In-Kind Manpower)</h3>
+            <div class="success-box">
+                <p><strong>Key Advantage:</strong> No extra cost to LC — uses existing staff time with AI assistance.</p>
+                <p>Estimated at HKD 800/hour for in-kind manpower valuation.</p>
+            </div>
+            <table class="cost-table">
+                <tr>
+                    <th>Item</th>
+                    <th>Hours</th>
+                    <th>Rate (HKD)</th>
+                    <th>Cost (HKD)</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>AI Agent (vibe coding)</td>
+                    <td>8 hrs</td>
+                    <td>800</td>
+                    <td>6,400</td>
+                    <td>Write migration script, field mappings</td>
+                </tr>
+                <tr>
+                    <td>Developer (review)</td>
+                    <td>4 hrs</td>
+                    <td>800</td>
+                    <td>3,200</td>
+                    <td>Review AI code, test, debug</td>
+                </tr>
+                <tr>
+                    <td>Content creator</td>
+                    <td>8 hrs</td>
+                    <td>800</td>
+                    <td>6,400</td>
+                    <td>Create content for 48 flagged pages</td>
+                </tr>
+                <tr>
+                    <td>QA tester</td>
+                    <td>3 hrs</td>
+                    <td>800</td>
+                    <td>2,400</td>
+                    <td>Spot check, link verification</td>
+                </tr>
+                <tr>
+                    <td>Project manager</td>
+                    <td>2 hrs</td>
+                    <td>800</td>
+                    <td>1,600</td>
+                    <td>Coordination, approval</td>
+                </tr>
+                <tr class="cost-total">
+                    <td><strong>Total In-Kind</strong></td>
+                    <td><strong>25 hrs</strong></td>
+                    <td></td>
+                    <td><strong>~20,000</strong></td>
+                    <td>Valuation only — no extra cost</td>
+                </tr>
+            </table>
+
+            <div class="success-box">
+                <h3>💡 Cost Comparison</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">HK$314,500</span>
+                        <span class="stat-label">ITO Manual (Year 1)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">HK$20,000</span>
+                        <span class="stat-label">API In-Kind (valuation)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">HK$294,500</span>
+                        <span class="stat-label">Potential Savings</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">94%</span>
+                        <span class="stat-label">Cost Reduction</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Important Notes</h3>
+                <ul>
+                    <li><strong>ITO Manual:</strong> Actual cost to LC — requires budget approval from HoD</li>
+                    <li><strong>API In-Kind:</strong> Valuation only — uses existing staff time, no extra budget needed</li>
+                    <li><strong>Annual Maintenance:</strong> HK$40,800/year applies to both scenarios (AEM platform cost)</li>
+                    <li><strong>API Access:</strong> Currently denied by ITO — pending new HoD review in October</li>
+                </ul>
+            </div>
         </div>
 
 
