@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIinLT 2027 — Quotation Briefing &amp; Feasibility Report</title>
+<style>
+  :root{
+    --navy:#0b2d5c; --navy2:#14386f; --blue:#1e5aa8; --red:#bf0000;
+    --ink:#1f2933; --muted:#5b6b7c; --line:#e2e8f0; --bg:#f4f6f9; --card:#ffffff;
+    --amber:#b45309; --green:#15803d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.62;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px 80px}
+
+  header.hero{background:linear-gradient(120deg,#0b2d5c 0%,#14386f 55%,#1e5aa8 100%);color:#fff;padding:44px 0 34px;position:relative;overflow:hidden}
+  header.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.10),transparent 70%)}
+  .hero .wrap{padding-bottom:0;position:relative;z-index:1}
+  .kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#f0a9ad;font-weight:700;margin-bottom:10px}
+  h1{font-size:30px;line-height:1.22;margin:0 0 12px;font-weight:800;letter-spacing:-.3px}
+  .hero .sub{color:#cdd9ef;font-size:15px;max-width:760px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:20px;font-size:12.5px;color:#eaf1fb}
+  .chip b{color:#fff}
+  .chip.alert{background:rgba(191,0,0,.32);border-color:rgba(255,150,150,.5)}
+
+  .toolbar{position:sticky;top:0;z-index:20;background:rgba(244,246,249,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 0}
+  .toolbar .wrap{padding-bottom:0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .toolbar button{font:inherit;font-size:13px;padding:7px 14px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--navy);cursor:pointer;font-weight:600}
+  .toolbar button:hover{background:#eef3fa}
+  .toolbar .note{font-size:12.5px;color:var(--muted);margin-left:auto}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:16px 0;box-shadow:0 1px 2px rgba(16,32,64,.04);overflow:hidden}
+  details[open]{box-shadow:0 4px 14px rgba(16,32,64,.07)}
+  summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:12px;font-weight:700;color:var(--navy);font-size:16.5px}
+  summary::-webkit-details-marker{display:none}
+  summary .num{flex:0 0 30px;height:30px;border-radius:8px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800}
+  summary .t{flex:1}
+  summary .caret{transition:transform .18s;color:var(--muted);font-size:13px}
+  details[open] summary .caret{transform:rotate(90deg)}
+  summary:hover{background:#f7fafd}
+  .body{padding:4px 20px 20px;border-top:1px solid var(--line)}
+  .body > *:first-child{margin-top:14px}
+
+  h3{font-size:15px;color:var(--navy);margin:22px 0 8px;letter-spacing:.2px}
+  h4{font-size:13.5px;color:var(--navy2);margin:16px 0 6px}
+  p{margin:9px 0}
+  ul,ol{margin:8px 0 8px 22px;padding:0}
+  li{margin:5px 0}
+  small,.small{font-size:12.5px;color:var(--muted)}
+
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;background:#fff}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f1f5fa;color:var(--navy);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+  tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;white-space:nowrap}
+
+  .callout{border-left:4px solid var(--blue);background:#f2f7fd;padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+  .callout.warn{border-left-color:var(--amber);background:#fff8ec}
+  .callout.red{border-left-color:var(--red);background:#fdf2f2}
+  .callout.green{border-left-color:var(--green);background:#f1f9f3}
+  .callout p:first-child{margin-top:0}
+  .callout p:last-child{margin-bottom:0}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:740px){.grid2{grid-template-columns:1fr}}
+  .stat{background:#f7fafd;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .stat .v{font-size:21px;font-weight:800;color:var(--navy);line-height:1.2}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:2px}
+
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.3px}
+  .b-red{background:#fdecec;color:#9b1c1c}
+  .b-amber{background:#fdf1dd;color:#92400e}
+  .b-green{background:#e8f6ec;color:#166534}
+  .b-blue{background:#e8f0fb;color:#1e40af}
+
+  .tl{list-style:none;margin:10px 0 0;padding:0}
+  .tl li{position:relative;padding:0 0 14px 22px;border-left:2px solid var(--line)}
+  .tl li:last-child{border-left-color:transparent;padding-bottom:0}
+  .tl li::before{content:"";position:absolute;left:-6px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid #fff}
+  .tl .when{font-size:12px;font-weight:700;color:var(--red)}
+  .tl.done li::before{background:#94a3b8}
+
+  .q{border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin:10px 0;background:#fff}
+  .q .qh{font-weight:700;color:var(--navy);margin-bottom:4px;font-size:14px}
+  .q .why{font-size:13px;color:var(--muted)}
+  .q ol{margin-top:6px}
+
+  .src{font-size:12px;color:var(--muted)}
+  .src a{word-break:break-word}
+  footer{color:var(--muted);font-size:12.5px;text-align:center;padding:30px 0 50px}
+  @media print{
+    .toolbar{display:none}
+    details{break-inside:avoid}
+    details:not([open]) .body{display:block}
+    body{background:#fff}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Internal briefing · HKBU Language Centre</div>
+    <h1>AIinLT 2027 — Invitation to Quotation<br>Briefing &amp; Feasibility Report</h1>
+    <p class="sub">Provision of Services for Organising the “International Summit on the Use of AI in Language Learning and Teaching 2027 (AIinLT 2027)”, funded by the Language Fund and hosted by SCOLAR. Prepared from the EDB invitation email + the 140-page quotation document, prior-edition research, and our own event-organising record.</p>
+    <div class="hero-meta">
+      <span class="chip">Ref <b>EDB(EID/LE)/26-27/06</b></span>
+      <span class="chip">Closing <b>29 Oct 2026, 12:00 noon</b></span>
+      <span class="chip">Event <b>21–24 June 2027</b></span>
+      <span class="chip">Format <b>2-day Summit + 2-day Workshops</b></span>
+      <span class="chip alert">Feedback due <b>14 Sep 2026</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <button onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">Expand all</button>
+    <button onclick="document.querySelectorAll('details').forEach(d=>d.open=false)">Collapse all</button>
+    <button onclick="window.print()">Print / PDF</button>
+    <span class="note">Prepared 11 Sep 2026 · 10 toggled sections</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- 0 EXEC SUMMARY -->
+<details open>
+  <summary><span class="num">0</span><span class="t">Executive summary — the decision in one page</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <div class="grid2">
+      <div class="stat"><div class="v">21–24 Jun 2027</div><div class="l">Summit (21–22) + Workshop Series (23–24)</div></div>
+      <div class="stat"><div class="v">≥ 4,000</div><div class="l">Required aggregate attendance (free of charge)</div></div>
+      <div class="stat"><div class="v">3 / 60 / 20</div><div class="l">Minimum keynotes / paper presentations / workshops</div></div>
+      <div class="stat"><div class="v">5 / 5 / 5 / 40</div><div class="l">Required on-site: academic / technical / admin / student helpers</div></div>
+      <div class="stat"><div class="v">70 : 30</div><div class="l">Technical : price weighting (two-envelope)</div></div>
+      <div class="stat"><div class="v">~48 days</div><div class="l">To closing (29 Oct 2026), from 11 Sep 2026</div></div>
+    </div>
+
+    <h3>What is being asked</h3>
+    <p>EDB is inviting quotations from a <b>Service Provider</b> to organise the third edition of the AIinLT Summit as a flagship of its <b>Digital Education Week 2027</b>. The provider must run a 2-day Summit (≥3 keynotes, 60 paper presentations, 1–2 expert panels) <b>and</b> a 2-day Workshop Series (≥20 workshops), secure clustered venues for 500+/100+/70+ audiences, deploy a minimum on-site team, manage publicity, registration, catering, AI-assisted simultaneous interpreting and transcription, video capture, an evaluation, and a public resource package — with a dissemination tail running to <b>December 2027</b>.</p>
+
+    <h3>The make-or-break: the experience gate</h3>
+    <div class="callout red">
+      <p><b>Essential requirement (disqualifying if not met).</b> The Service Provider must show a proven track record of organising international conferences related to (applied) linguistics or AI in education, with <b>total attendance exceeding 4,000 within the past 10 years</b>, <b>and</b> those conferences must have included keynote speeches, parallel sessions, expert panel discussions, <b>and</b> pre-/post-conference workshops. The proposed <b>Event Management Team Leader</b> must separately show a multi-day international conference with <b>&gt;4,000 attendance in the past 5 years</b>, requiring stage/venue set-up, guest reception, catering and manpower deployment.</p>
+    </div>
+    <p>This gate — not price and not the plans — is the first thing to resolve. If the Language Centre cannot itself point to qualifying events, the only viable route is to <b>partner</b> (sub-contracting is permitted, with undertakings) or to bid under a wider institutional/HKBU record with a professional conference organiser as team leader. <span class="small">See §6 for our record and the gap.</span></p>
+
+    <h3>Prior editions — an incumbent is already ahead</h3>
+    <p>AIinLT 2025 (4–7 Jul 2025) and AIinLT 2026 (21–24 Jun 2026) were both <b>hosted by PolyU</b> (Department of English and Communication) with EDB and SCOLAR. The 2026 edition drew <b>over 5,000 attendances</b>, with <b>93 parallel sessions</b>, <b>22 workshops</b>, and six keynotes. PolyU therefore satisfies the experience gate outright and can be expected to bid again. <span class="small">Sources in §5 and the appendix.</span></p>
+
+    <h3>Effort &amp; cost at a glance</h3>
+    <div class="grid2">
+      <div class="stat"><div class="v">≈ 2–3 FTE-years</div><div class="l">Core organising effort across a ~14-month runway (≈3,600–5,700 planning hours), <i>plus</i> ≈2,800 on-site staff-hours</div></div>
+      <div class="stat"><div class="v">≈ HK$3.6M–8.1M</div><div class="l">Indicative delivery cost, <b>no published ceiling</b>; event is free so there is no registration income to offset it</div></div>
+    </div>
+
+    <h3>Preliminary position</h3>
+    <div class="callout warn">
+      <p><b>Do not decide the bid before the briefing.</b> The single cheapest next step is to attend the online briefing on <b>14 Sep</b> (registration deadline 9 Sep has passed — request late entry) and use it to resolve the experience-gate and partnering questions. A go/no-go on costs should follow only after §6–§8 are checked against HKBU’s actual qualifying record and appetite. <span class="small">Detailed questions in §10.</span></p>
+    </div>
+  </div>
+</details>
+
+<!-- 1 INVITATION -->
+<details open>
+  <summary><span class="num">1</span><span class="t">The invitation — email chain, key facts, deadlines</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <h3>1.1 How it reached the Centre</h3>
+    <table>
+      <tr><th>When</th><th>From → To</th><th>Substance</th></tr>
+      <tr><td>3 Sep 2026, 14:15</td><td><b>Kristy Wong</b>, EA(NI), Language Education &amp; SCOLAR Section, EDB → service providers</td><td>Original “Invitation to Quotation”, marked <i>High importance</i>, with the 140-page quotation documents attached.</td></tr>
+      <tr><td>3 Sep 2026, 16:53</td><td><b>Albert Chau</b> → <b>Hang Joshua Chan</b> &amp; <b>Hok Chung Ng</b></td><td>“I wonder if LC colleagues are interested. Please bring this to their attention.”</td></tr>
+      <tr><td>3 Sep 2026, 17:15</td><td><b>Hang Joshua Chan</b> → LC colleagues (lcft list)</td><td>“VPTL alerts the Centre to this opportunity… get back to us by <b>14 September</b>. Hok Chung and I will then review your input and consult VPTL.”</td></tr>
+      <tr><td>10 Sep 2026, 14:44</td><td><b>Mable Chan</b> → Meilin Chen, Jonathan Rickard, Emma Zhang, <b>Simon H Wang</b>, Nga Chong Wong, Xinxin Li</td><td>“Let me know what you think about this initiative.”</td></tr>
+    </table>
+    <p class="small">So the immediate internal deliverable is a <b>view + recommendation to Joshua and Hok Chung by 14 September</b>, which they will take to VPTL.</p>
+
+    <h3>1.2 Key facts (from the quotation document)</h3>
+    <table>
+      <tr><th>Item</th><th>Detail</th></tr>
+      <tr><td>Reference number</td><td><b>EDB(EID/LE)/26-27/06</b></td></tr>
+      <tr><td>Event</td><td>International Summit on the Use of AI in Language Learning and Teaching 2027 (AIinLT 2027)</td></tr>
+      <tr><td>Funding / host</td><td>Funded by the <b>Language Fund</b>; hosted by <b>SCOLAR</b> (Standing Committee on Language Education and Research)</td></tr>
+      <tr><td>Dates</td><td>Summit <b>21–22 June 2027</b>; Workshop Series <b>23–24 June 2027</b></td></tr>
+      <tr><td>Positioning</td><td>A flagship event of EDB’s <b>Digital Education Week 2027</b></td></tr>
+      <tr><td>Closing</td><td><b>12:00 noon (HKT), Thursday 29 October 2026</b> — late quotations rejected</td></tr>
+      <tr><td>Submission</td><td><b>In duplicate</b> (two identical sets), in a sealed plain envelope marked with the ref. no., subject and closing date/time, addressed to <i>The Chairman, Quotation Opening Team</i>, deposited in the <b>Language Education &amp; SCOLAR Section Quotation Box</b>, EDB Reception Counter, 5/F South Tower, Tseung Kwan O Government Offices, 30 Tong Yin Street, TKO, N.T.</td></tr>
+      <tr><td>Briefing</td><td>Online, <b>10:30 a.m., Monday 14 September 2026</b>; register via <b>Appendix B (Reply Slip)</b> by email <b>on/before 9 September 2026</b></td></tr>
+      <tr><td>Enquiries</td><td>EA(NI) — <a href="mailto:eani@edb.gov.hk">eani@edb.gov.hk</a> · fax 2768 9928 · ≥3 working days before closing</td></tr>
+      <tr><td>Documents</td><td>Parts 1–10 + Schedules A–H + Appendices A–D (incl. Reply Slip, Quotation Label, Sub-contractor’s Undertaking)</td></tr>
+    </table>
+
+    <h3>1.3 Deadline picture (as at 11 Sep 2026)</h3>
+    <ul class="tl">
+      <li class="done"><span class="when">9 Sep 2026 (Wed) — passed</span><br>Briefing registration deadline (Appendix B Reply Slip).</li>
+      <li><span class="when">14 Sep 2026 (Mon), 10:30</span><br>Online briefing session.</li>
+      <li><span class="when">14 Sep 2026 (Mon)</span><br>HKBU internal feedback due to Joshua / Hok Chung.</li>
+      <li><span class="when">29 Oct 2026 (Thu), 12:00 noon</span><br>Quotation closing.</li>
+      <li><span class="when">Late Nov 2026 → Dec 2027</span><br>Contract deliverables timeline (see §2.4).</li>
+    </ul>
+  </div>
+</details>
+
+<!-- 2 SPECS -->
+<details>
+  <summary><span class="num">2</span><span class="t">What EDB is asking for — scope, deliverables, payment</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <h3>2.1 Theme &amp; sub-themes</h3>
+    <p><b>Theme:</b> “AI in Language Education: Elevating Practice, Enduring Sustainability, and Leading a Paradigm Shift” — positioned as a progression from awareness (2025) → theory-to-practice (2026) → deepening implementation and sustainability (2027).</p>
+    <p><b>Eleven sub-themes</b> (all must be comprehensively covered by the 20 workshop topics): (i) Sustaining &amp; Deepening AI Integration; (ii) Redefining the Educator: AI as Collaborator, Teacher as Architect; (iii) AI-Augmented Personalisation &amp; Learner Autonomy; (iv) Next-Gen Assessment: Continuous, Formative, Proficiency-Based; (v) AI Literacy for All; (vi) Inclusive &amp; Equitable AI; (vii) Human-AI Synergy in the Classroom; (viii) AI for Smarter Language Education Administration; (ix) Multimodal &amp; Immersive Language Learning; (x) From AI User to AI Creator; (xi) Evolving Policies &amp; Future Directions.</p>
+
+    <h3>2.2 Scale &amp; mandatory content</h3>
+    <table>
+      <tr><th>Component</th><th>Minimum</th><th>Notes</th></tr>
+      <tr><td>Keynote speeches</td><td class="num">3</td><td>Leading figures in the theme/sub-theme fields</td></tr>
+      <tr><td>Paper presentations</td><td class="num">60</td><td>Presenters may include Summit speakers/faculty</td></tr>
+      <tr><td>Expert panel discussions</td><td class="num">1–2</td><td>Provider proposes 1–2 topics</td></tr>
+      <tr><td>Workshops</td><td class="num">20</td><td>~1.5 h each; 20 topics proposed; all 11 sub-themes covered</td></tr>
+      <tr><td>Aggregate attendance</td><td class="num">≥ 4,000</td><td>Free of charge to all participants</td></tr>
+      <tr><td>Balance</td><td colspan="2">Balanced distribution of papers/keynotes/workshops among international, Mainland and local academics; balanced between Chinese and English Language</td></tr>
+    </table>
+    <p><b>Target participants:</b> Summit — academics, researchers, postgraduates, undergraduates, school teachers, educators, curriculum developers, policymakers. Workshops — local teachers and middle-to-senior school management, curriculum leaders, teacher educators, school IT coordinators.</p>
+
+    <h3>2.3 Scope of services — the full ask</h3>
+    <ul>
+      <li>Establish a <b>Summit Committee</b> led by at least one faculty member, with Government Representatives as members.</li>
+      <li><b>Venues:</b> clustered, within walking distance; main venue for opening/closing for <b>500+</b>; ≥5 parallel-session venues for <b>100+</b> each; ≥5 workshop venues for <b>70+</b> each; plus press-conference and media-interview venues. Accessible by public transport or free shuttle (provider’s responsibility).</li>
+      <li><b>Manpower on event days (minimum):</b> 5 academic staff, 5 technical support, 5 administrative support, <b>40 student helpers</b>; plus a training session for all student helpers run by the provider <i>and</i> SCOLAR.</li>
+      <li><b>Publicity &amp; open registration</b> for all participant categories; participant records, name badges, programmes (soft + hard copy).</li>
+      <li><b>Catering:</b> one morning and one afternoon coffee break on each Summit and Workshop day; one lunch on each Summit day.</li>
+      <li><b>AI-assisted simultaneous interpreting + real-time transcription</b> for the opening ceremony, panel discussion(s) and all keynotes.</li>
+      <li><b>Video-record</b> keynotes, paper presentations and panels during the Summit days; photograph the whole four-day event.</li>
+      <li><b>Evaluation plan</b> (effectiveness/impact) and a <b>dissemination plan</b> making deliverables freely accessible: (i) video recordings; (ii) an electronic resource package (summary of key research findings in plain English, panel advice/suggestions, workshop handouts/materials).</li>
+      <li><b>Contingency plan</b> (weather, enrolment failures/overwhelming demand, comms failures, technical failures, speaker no-shows).</li>
+      <li>Collaboration across faculties/institutions encouraged; other tasks as specified by Government Representatives.</li>
+    </ul>
+
+    <h3>2.4 Deliverables timeline</h3>
+    <table>
+      <tr><th>#</th><th>Deliverable</th><th>Expected completion</th></tr>
+      <tr><td>i</td><td>Form Summit Committee</td><td>Late Nov 2026</td></tr>
+      <tr><td>ii</td><td>Secure venue(s) + submit publicity plan</td><td>Late Dec 2026</td></tr>
+      <tr><td>iii</td><td>Issue call for paper abstracts</td><td>Late Jan 2027</td></tr>
+      <tr><td>iv</td><td>Confirm workshop &amp; panel topics</td><td>Late Feb 2027</td></tr>
+      <tr><td>v</td><td>Confirm keynote speakers &amp; topics</td><td>Mid-Mar 2027</td></tr>
+      <tr><td>vi</td><td>Open registration</td><td>Late Mar 2027</td></tr>
+      <tr><td>vii</td><td>Finalise paper presentations</td><td>Early May 2027</td></tr>
+      <tr><td>viii–ix</td><td>Finalise evaluation plan; programmes &amp; registrations</td><td>Early Jun 2027</td></tr>
+      <tr><td>x</td><td><b>Deliver AIinLT 2027</b></td><td><b>21–24 Jun 2027</b></td></tr>
+      <tr><td>xi</td><td>Finalise dissemination plan</td><td>Late Jul 2027</td></tr>
+      <tr><td>xii</td><td>Complete video recordings (for approval)</td><td>Late Aug 2027</td></tr>
+      <tr><td>xiii</td><td>Videos publicly accessible</td><td>Late Sep 2027</td></tr>
+      <tr><td>xiv</td><td>Electronic resource package (for approval)</td><td>Late Oct 2027</td></tr>
+      <tr><td>xv</td><td>Resource package public</td><td>Late Nov 2027</td></tr>
+      <tr><td>xvi</td><td>Evaluation report accepted</td><td>Late Dec 2027</td></tr>
+    </table>
+
+    <h3>2.5 Payment schedule</h3>
+    <table>
+      <tr><th>Instalment</th><th>Trigger</th><th class="num">Share</th></tr>
+      <tr><td>1st</td><td>Formation of Summit Committee + issuance of call for papers</td><td class="num">20%</td></tr>
+      <tr><td>2nd</td><td>Completion of delivery of both the Summit and Workshop Series</td><td class="num">50%</td></tr>
+      <tr><td>3rd</td><td>Dissemination of deliverables + acceptance of evaluation report</td><td class="num">30%</td></tr>
+    </table>
+    <p class="small">Note the cash-flow shape: 20% early 2027, 50% at delivery (Jun 2027), and 30% only after the dissemination + evaluation tail (~end 2027). Costs will run ahead of payments through the main delivery period, and 50% of the contract rides on successful delivery.</p>
+  </div>
+</details>
+
+<!-- 3 ASSESSMENT -->
+<details>
+  <summary><span class="num">3</span><span class="t">How the quotation will be assessed — the scoring maths</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <p><b>Two-envelope, 70 (technical) : 30 (price)</b>. Price is only opened and assessed after the technical assessment.</p>
+    <table>
+      <tr><th>Stage</th><th>Test</th><th>Consequence</th></tr>
+      <tr><td>1</td><td>Completeness check (all documents + information submitted, per Terms para 3.3(b))</td><td>Invalid → excluded</td></tr>
+      <tr><td>2</td><td>Compliance with <b>essential requirements</b></td><td>Fail any → excluded</td></tr>
+      <tr><td>3</td><td>Technical assessment (max 100)</td><td>Must pass; passing mark 16 for criteria (1)–(4)</td></tr>
+      <tr><td>4</td><td>Price assessment (only for conforming quotations)</td><td>Weighted into final score</td></tr>
+    </table>
+
+    <h3>3.1 Technical marking (100 marks)</h3>
+    <table>
+      <tr><th>Part</th><th>Criterion</th><th class="num">Max</th><th class="num">Pass</th></tr>
+      <tr><td rowspan="5">A — Execution Plan (85)</td><td>(1) Design Plan</td><td class="num">30</td><td class="num" rowspan="4">16*</td></tr>
+      <tr><td>(2) Implementation Plan</td><td class="num">25</td></tr>
+      <tr><td>(3) Contingency Plan</td><td class="num">5</td></tr>
+      <tr><td>(4) Supervision Plan</td><td class="num">5</td></tr>
+      <tr><td>(5a) Pro-innovation Proposals / (5b) ESG Proposals</td><td class="num">15 / 5</td><td class="num">—</td></tr>
+      <tr><td rowspan="2">B — Experience (15)</td><td>(6) Similar events organised by the Service Provider</td><td class="num">10</td><td class="num">—</td></tr>
+      <tr><td>(7) Similar events organised by the Team Leader</td><td class="num">5</td><td class="num">—</td></tr>
+      <tr><td colspan="2"><b>Total technical mark</b></td><td class="num"><b>100</b></td><td class="num">—</td></tr>
+    </table>
+    <p class="small">* Passing mark 16 applies to criteria (1)–(4) only, ≈25% of the 65 marks excluding the innovation/ESG reserves. Grades are five-step: Very Good = 100%, Good = 75%, Satisfactory = 50%, Fair = 25%, Poor = 0%.</p>
+
+    <h3>3.2 Experience scoring (the incumbent’s advantage)</h3>
+    <div class="grid2">
+      <div>
+        <table>
+          <tr><th>Service Provider (10)</th><th class="num">Mark</th></tr>
+          <tr><td>&gt;5 similar events (past 10 yrs)</td><td class="num">10</td></tr>
+          <tr><td>5</td><td class="num">7.5</td></tr>
+          <tr><td>4</td><td class="num">5</td></tr>
+          <tr><td>3</td><td class="num">2.5</td></tr>
+          <tr><td>1–2</td><td class="num">0</td></tr>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th>Team Leader (5)</th><th class="num">Mark</th></tr>
+          <tr><td>&gt;5 similar events (past 5 yrs)</td><td class="num">5</td></tr>
+          <tr><td>5</td><td class="num">3.75</td></tr>
+          <tr><td>4</td><td class="num">2.5</td></tr>
+          <tr><td>3</td><td class="num">1.25</td></tr>
+          <tr><td>1–2</td><td class="num">0</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="small">“Similar event” for the provider = an international conference in (applied) linguistics or AI in education with total attendance &gt;4,000, including keynotes, parallel sessions, panels and pre-/post-conference workshops. For the team leader = a multi-day international conference with &gt;4,000 attendance requiring stage/venue set-up, guest reception, catering and manpower deployment. Experience must be claimed in Schedules B/D with documentary proof, or it scores zero.</p>
+
+    <h3>3.3 Final score</h3>
+    <div class="callout">
+      <p><b>Weighted technical</b> = 70 × (your technical mark ÷ the highest technical mark among conforming quotations).<br>
+      <b>Weighted price</b> = 30 × (lowest conforming price ÷ your price).<br>
+      <b>Total</b> = weighted technical + weighted price.</p>
+    </div>
+    <p class="small">Consequence: the highest technical bidder automatically takes the full 70, and everyone else is scaled down against it. Price is a 30-point lever — a bid at twice the lowest price would score 15/30. Innovation/ESG proposals (20 of the 85 Part-A marks) are effectively “free” marks for good ideas and should be treated as a must, not an extra.</p>
+  </div>
+</details>
+
+<!-- 4 PRIOR EDITIONS -->
+<details>
+  <summary><span class="num">4</span><span class="t">Prior editions — what “good” looks like (web research)</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <div class="grid2">
+      <div>
+        <h3>AIinLT 2025 (1st edition)</h3>
+        <table>
+          <tr><th>Item</th><th>Detail</th></tr>
+          <tr><td>Dates</td><td>4–7 July 2025 (Fri–Mon)</td></tr>
+          <tr><td>Venue</td><td>PolyU campus</td></tr>
+          <tr><td>Organisers</td><td>EDB + SCOLAR + PolyU Dept. of English &amp; Communication + Hong Kong Education City (EdCity)</td></tr>
+          <tr><td>Scope</td><td>“Languages and other subjects”; Summit 4–5 Jul, Post-Summit Workshops 6–7 Jul; technology showcase</td></tr>
+          <tr><td>Scale</td><td>Opening ceremony (Jockey Club Auditorium) drew <b>nearly 1,000 attendees</b>; first flagship of EDB’s first <b>Digital Education Week</b></td></tr>
+          <tr><td>Languages</td><td>Cantonese, Putonghua and English; free to attendees and presenters</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>AIinLT 2026 (2nd edition) — the benchmark</h3>
+        <table>
+          <tr><th>Item</th><th>Detail</th></tr>
+          <tr><td>Dates</td><td>21–24 June 2026 (Sun–Wed)</td></tr>
+          <tr><td>Venue</td><td>PolyU; opening at Jockey Club Auditorium</td></tr>
+          <tr><td>Theme</td><td>“AI in Language Education: From Ideas to Implementation to Impact”</td></tr>
+          <tr><td>Attendance</td><td><b>&gt; 5,000 attendances</b> across four days</td></tr>
+          <tr><td>Sessions</td><td><b>93</b> parallel sessions + teaching demos (21–22 Jun); <b>22</b> hands-on workshops (23–24 Jun)</td></tr>
+          <tr><td>Keynotes</td><td>6, incl. Prof. Mairéad Pratschke; Prof. Alan Cheung (CUHK); Prof. Jang Ho Lee (Chung-Ang, Korea); Prof. Benjamin Luke Moorhouse (CityU); Prof. Tony McEnery (PolyU); Prof. Hongxia Yang (PolyU)</td></tr>
+          <tr><td>Opening</td><td>Officiated by the Secretary for Education; flagships EDB’s <b>Digital Education Week 2026</b></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h3>4.1 What the benchmark tells us</h3>
+    <ul>
+      <li><b>Incumbent:</b> PolyU has hosted both editions and comfortably clears the &gt;4,000 attendance gate (2026: &gt;5,000). Expect them to score 10/10 and 5/5 on experience.</li>
+      <li><b>Scale is real:</b> the 2027 requirement (60 papers, 20 workshops, 4,000) is <i>below</i> what 2026 actually delivered (93 sessions, 22 workshops, &gt;5,000) — so the required scale is achievable by an experienced organiser, but not trivially.</li>
+      <li><b>What made it work:</b> free entry; strong government backing (Secretary for Education opening); a school-teacher focus; hands-on workshops rather than talks only; cross-sector panels mixing school educators with academics; and a heavy <b>digital capture + reference-materials</b> tail (a public thematic website).</li>
+      <li><b>The 2027 twist:</b> the new emphasis on <i>sustainability and implementation depth</i>, plus the explicit AI-assisted interpreting/transcription and a public resource package, raises the technology and post-production bar.</li>
+    </ul>
+  </div>
+</details>
+
+<!-- 5 BENCHMARKS -->
+<details>
+  <summary><span class="num">5</span><span class="t">Cost &amp; resource benchmarks from comparable events</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <p>There is <b>no published budget or ceiling</b> in the quotation documents — bidders simply quote a lump sum for the whole service. The following are public market benchmarks gathered to build the estimate in §8; they are indicative, not quotations.</p>
+    <table>
+      <tr><th>Item</th><th>Benchmark</th><th>Source</th></tr>
+      <tr><td>Conference registration (reference only — AIinLT is free)</td><td>≈ HK$350–850 professional; HK$200–400 student (2026, HK)</td><td class="src">Conference Alert, HK 2026–27</td></tr>
+      <tr><td>Conference lunch catering</td><td>HKCEC semi-buffet lunch <b>HK$178/person</b>; hotel ballroom Chinese lunch from <b>HK$8,888/table</b></td><td class="src">HKCEC Congress Plus; Harbour Grand HK</td></tr>
+      <tr><td>Venue room hire</td><td>Small meeting rooms from ≈ HK$380–600/hour; HKCEC can host up to 20,000</td><td class="src">ReUbird; Common Room; HKCEC</td></tr>
+      <tr><td>University conference centre support</td><td>CUHK HCICC provides venue-charge references, floor plans, bulk booking, free supplies, signage, shuttle/AV support — a model for keeping venue costs down</td><td class="src">CUHK Conference Services</td></tr>
+      <tr><td>PCO (professional conference organiser) model</td><td>Typically a <b>fixed fee + per-delegate</b> component; scope covers registration, logistics, AV/SI coordination, marketing, budget management</td><td class="src">Ex Ordo; WorldPCO; IAPCO</td></tr>
+      <tr><td>PCO sector scale (context)</td><td>IAPCO accredited PCOs organised 23,512 meetings in 2025, 7.7M participants (≈1,150 participants/event average)</td><td class="src">IAPCO 2025</td></tr>
+    </table>
+    <div class="callout warn">
+      <p><b>Read-across:</b> a free, 4-day, 4,000-attendance event with 20+ parallel venues, catering, AI interpreting, multi-room streaming and a two-round video/resource-package tail is a <b>multi-million-HKD undertaking</b>. The absence of a published ceiling means the price must be built bottom-up (cost + margin), while the 30-point price formula strongly rewards not being the most expensive bid.</p>
+    </div>
+  </div>
+</details>
+
+<!-- 6 OUR EXPERIENCE -->
+<details>
+  <summary><span class="num">6</span><span class="t">Our past experience — and the experience gap</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <h3>6.1 What the Language Centre has organised</h3>
+    <table>
+      <tr><th>Type</th><th>Examples (recent)</th><th>Typical scale</th></tr>
+      <tr><td>LC Symposium</td><td>“Cultivating Connections: The Future of Intercultural and Transdisciplinary Communication Education” (25 Jun 2026); earlier symposium (6 May 2025)</td><td>Online/faculty audience; dozens–low hundreds</td></tr>
+      <tr><td>Academic/teaching exchange</td><td>19th 大專中文教學交流會 “新時代的大專中文教學” (Apr 2026)</td><td>Local tertiary teachers; tens–low hundreds</td></tr>
+      <tr><td>Competitions</td><td>Cantonese Recitation (2nd), Mandarin Singing (3rd), 3MT Speech, English Speaking Contest, Short Video competitions</td><td>School/university entrants; hundreds across an edition</td></tr>
+      <tr><td>Seminars / talks</td><td>LC English Seminars (Forey, Ho, …); Japanese &amp; cultural talks; AHKLC talks</td><td>Tens–low hundreds, often hybrid</td></tr>
+      <tr><td>Research events</td><td>Symposium pages, Research Team programme (IRA Scheme, projects)</td><td>Research audience</td></tr>
+    </table>
+
+    <h3>6.2 The gap (honest assessment)</h3>
+    <div class="callout red">
+      <p>Based on the record above, the Language Centre does <b>not</b> obviously hold a qualifying “similar event”: a <b>multi-day international conference with &gt;4,000 attendance</b>, involving stage/venue set-up, guest reception, catering and large-scale manpower deployment — the essential requirement for both the Service Provider and the Event Management Team Leader.</p>
+    </div>
+    <p>Three ways this could still be bridged, all of which need checking before committing:</p>
+    <ol>
+      <li><b>Wider HKBU record.</b> The quote can be submitted by HKBU (not just the LC). HKBU as a whole hosts large international conferences/anniversaries — if any qualifying event (&gt;4,000; multi-day; with workshops) exists in the last 10 years, it may satisfy criterion (6). <b>Needs verification with the Research Office / Events.</b></li>
+      <li><b>Partner (sub-contracting allowed).</b> A professional conference organiser or another faculty with a qualifying event could serve as Service Provider / Team Leader, with the LC supplying academic content — declared in the Information Schedule with a sub-contractor’s undertaking (Appendix D).</li>
+      <li><b>Consortium.</b> Team up with an institution that has run a comparable summit, or support rather than lead (e.g., partner with the incumbent), preserving LC involvement without carrying delivery risk.</li>
+    </ol>
+    <p class="small">If none of these hold, the quotation will fail Stage 2 regardless of how good the plans are — so this is the first question, not the last.</p>
+  </div>
+</details>
+
+<!-- 7 EFFORT -->
+<details>
+  <summary><span class="num">7</span><span class="t">Effort estimate — hours and extra manpower</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <p>Bottom-up from the required deliverables (§2.4) and the 2026 benchmark (§4), over a runway of <b>~14 months</b> (late Nov 2026 committee → late Dec 2027 evaluation report). Hours are <b>person-hours</b> across the core organising team; ranges reflect depth of outsourcing.</p>
+
+    <h3>7.1 Planning &amp; delivery workstreams</h3>
+    <table>
+      <tr><th>Workstream</th><th class="num">Low (h)</th><th class="num">High (h)</th><th>Notes</th></tr>
+      <tr><td>Governance, Summit Committee &amp; EDB liaison</td><td class="num">250</td><td class="num">350</td><td>Meetings, reporting, approvals, contingency governance</td></tr>
+      <tr><td>Venue sourcing, contracts, layout, accessibility, shuttles</td><td class="num">300</td><td class="num">450</td><td>11+ clustered rooms; site visits; setup/teardown coordination</td></tr>
+      <tr><td>Call for papers, peer review, programme committee</td><td class="num">600</td><td class="num">1,000</td><td>Assume 150–250 submissions × 2–3 reviews; 60 accepted</td></tr>
+      <tr><td>Programme &amp; speaker management (keynotes, papers, panels, workshops)</td><td class="num">350</td><td class="num">500</td><td>Scheduling, briefings, speaker care, session chairs</td></tr>
+      <tr><td>Publicity, outreach &amp; media</td><td class="num">400</td><td class="num">600</td><td>Schools + international outreach, website, social, press</td></tr>
+      <tr><td>Registration &amp; participant management</td><td class="num">400</td><td class="num">600</td><td>System, 4,000+ registrations, badges, helpdesk</td></tr>
+      <tr><td>Catering &amp; hospitality coordination</td><td class="num">150</td><td class="num">250</td><td>8 coffee breaks + 2 lunches; dietary/VIP handling</td></tr>
+      <tr><td>AV, technical, hybrid streaming, AI SI + transcription</td><td class="num">250</td><td class="num">400</td><td>Multi-room AV; simultaneous interpreting setup</td></tr>
+      <tr><td>Video recording, photography &amp; post-production</td><td class="num">350</td><td class="num">600</td><td>Keynotes + 60 papers + panels; edit for approval</td></tr>
+      <tr><td>Evaluation (design, surveys, analysis, report)</td><td class="num">200</td><td class="num">350</td><td>Instrument, collect, analyse, write</td></tr>
+      <tr><td>Dissemination (video portal + resource package)</td><td class="num">250</td><td class="num">400</td><td>Editing summaries in plain English; public access</td></tr>
+      <tr><td>Contingency planning &amp; execution</td><td class="num">120</td><td class="num">200</td><td>Weather, enrolment, comms, technical, no-shows</td></tr>
+      <tr><td><b>Core planning subtotal</b></td><td class="num"><b>3,620</b></td><td class="num"><b>5,700</b></td><td>≈ <b>2.1–3.3 FTE-years</b> (at 1,720 h/yr)</td></tr>
+    </table>
+
+    <h3>7.2 On-site effort (4 event days + ~2 setup/teardown days = 6 days)</h3>
+    <table>
+      <tr><th>Role</th><th class="num">People (min)</th><th class="num">Hours each</th><th class="num">Staff-hours</th></tr>
+      <tr><td>Academic staff</td><td class="num">5</td><td class="num">60</td><td class="num">300</td></tr>
+      <tr><td>Technical support</td><td class="num">5</td><td class="num">72</td><td class="num">360</td></tr>
+      <tr><td>Administrative support</td><td class="num">5</td><td class="num">60</td><td class="num">300</td></tr>
+      <tr><td>Student helpers (trained)</td><td class="num">40</td><td class="num">40</td><td class="num">1,600</td></tr>
+      <tr><td>Event manager + supervisors</td><td class="num">2</td><td class="num">84</td><td class="num">168</td></tr>
+      <tr><td><b>On-site subtotal</b></td><td class="num"><b>57</b></td><td class="num">—</td><td class="num"><b>≈ 2,730</b></td></tr>
+    </table>
+    <div class="callout">
+      <p><b>Total effort: ≈ 6,350–8,430 person-hours</b> across the runway, of which ≈2,730 are concentrated into the event week. In FTE terms, the core work is <b>≈ 2–3 FTE-years</b>, <i>before</i> counting the 40 trained student helpers and the technical/production crews.</p>
+    </div>
+
+    <h3>7.3 Extra manpower needed (beyond current staff)</h3>
+    <table>
+      <tr><th>Role</th><th>Commitment</th><th>Why</th></tr>
+      <tr><td>Event Manager / PCO lead</td><td>Full-time for the runway</td><td>Owns schedule, vendors, budget, risk; likely the “Team Leader” for Schedule B</td></tr>
+      <tr><td>Programme Officer</td><td>~0.5–1 FTE, peak Jan–Jun 2027</td><td>Call for papers, review platform, 60-paper programme, workshop logistics</td></tr>
+      <tr><td>Communications / Publicity Officer</td><td>~0.5 FTE, peak Dec 2026–Jun 2027</td><td>School + international outreach, website, media, social</td></tr>
+      <tr><td>Registration &amp; Finance Officer</td><td>~0.5 FTE, peak Mar–Jul 2027</td><td>4,000+ registrations, records, badges, invoicing/milestones</td></tr>
+      <tr><td>Web / design support</td><td>Part-time, contract</td><td>Event site, programmes, resource package</td></tr>
+      <tr><td>Technical / AV crew</td><td>Contract, event week + setup</td><td>Multi-room AV, hybrid streaming, recording</td></tr>
+      <tr><td>Video production team</td><td>Contract, event + 2 post-production waves</td><td>Recordings, editing, public portal</td></tr>
+      <tr><td>AI SI + transcription provider</td><td>Contract, Summit days</td><td>Mandatory Clause 5.14</td></tr>
+      <tr><td>Student helpers</td><td>40 × training + event week</td><td>Mandatory (Clause 5.7); training with SCOLAR</td></tr>
+    </table>
+    <p class="small">If the LC leads in-house without a PCO, essentially all of the planning roles above must be backfilled or seconded — i.e., the centre would need to release ~2–3 FTE for over a year, or buy the capability in.</p>
+  </div>
+</details>
+
+<!-- 8 COST -->
+<details>
+  <summary><span class="num">8</span><span class="t">Indicative cost estimate (no published ceiling)</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <div class="callout warn">
+      <p>These are <b>planning estimates with wide ranges</b>, built from §2 requirements and §5 market benchmarks — <b>not</b> a quotation. Actual cost depends heavily on venue choice (university campus vs. HKCEC/hotel) and how much is outsourced to a PCO. The event is <b>free of charge</b>, so there is no registration income to offset costs.</p>
+    </div>
+    <table>
+      <tr><th>Cost line</th><th class="num">Low (HK$)</th><th class="num">High (HK$)</th><th>Assumption</th></tr>
+      <tr><td>Venue (11+ clustered rooms, 4 days + setup)</td><td class="num">300,000</td><td class="num">1,500,000</td><td>University campus (low) vs. HKCEC/hotel (high); shuttle included at high end</td></tr>
+      <tr><td>Catering (8 coffee breaks + 2 lunches × 4,000 attendee-days)</td><td class="num">500,000</td><td class="num">800,000</td><td>≈HK$150–200/lunch, HK$50–80/coffee-break</td></tr>
+      <tr><td>Manpower (40 student helpers + temporary tech/admin)</td><td class="num">450,000</td><td class="num">750,000</td><td>Helper ≈HK$80–120/h; temp support for prep + event week</td></tr>
+      <tr><td>AV / technical / hybrid streaming (5+ parallel rooms)</td><td class="num">400,000</td><td class="num">800,000</td><td>PA, screens, capture, livestream, technicians</td></tr>
+      <tr><td>AI-assisted simultaneous interpreting + real-time transcription</td><td class="num">150,000</td><td class="num">400,000</td><td>Opening, panels, all keynotes (Clause 5.14)</td></tr>
+      <tr><td>Video recording, editing &amp; photography</td><td class="num">300,000</td><td class="num">600,000</td><td>Keynotes + 60 papers + panels; approval cycle; public portal</td></tr>
+      <tr><td>Publicity, website, design, printing (badges, programmes)</td><td class="num">250,000</td><td class="num">500,000</td><td>Outreach to HK schools + international; soft &amp; hard programmes</td></tr>
+      <tr><td>Keynote speakers (honoraria, travel, accommodation ×3+)</td><td class="num">150,000</td><td class="num">400,000</td><td>International keynotes; varies by origin</td></tr>
+      <tr><td>Evaluation + electronic resource package production</td><td class="num">150,000</td><td class="num">350,000</td><td>Instruments, analysis, plain-English summaries, public hosting</td></tr>
+      <tr><td>Contingency (~10–15%)</td><td class="num">300,000</td><td class="num">600,000</td><td>Weather, no-shows, enrolment, technical failures</td></tr>
+      <tr><td><b>Subtotal (in-house led)</b></td><td class="num"><b>3,100,000</b></td><td class="num"><b>6,600,000</b></td><td>—</td></tr>
+      <tr><td>PCO / event-management fee (if outsourced)</td><td class="num">500,000</td><td class="num">1,500,000</td><td>Fixed fee + per-delegate model</td></tr>
+      <tr><td><b>Indicative total</b></td><td class="num"><b>≈3,600,000</b></td><td class="num"><b>≈8,100,000</b></td><td>≈ HK$900–2,000 per attendance at 4,000</td></tr>
+    </table>
+    <p class="small">Reality check: at a required 4,000 attendances those totals imply roughly <b>HK$900–2,000 per attendance</b>, which is plausible for a free, catered, multi-track, multi-day summit with production. The 20/50/30 payment schedule (see §2.5) means most cost is incurred before the 50% delivery payment.</p>
+  </div>
+</details>
+
+<!-- 9 RISKS -->
+<details>
+  <summary><span class="num">9</span><span class="t">Feasibility, risks &amp; mitigations</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <table>
+      <tr><th>Risk</th><th>Impact</th><th>Likelihood</th><th>Mitigation</th></tr>
+      <tr><td><b>Fails the &gt;4,000-attendance experience gate</b></td><td>Disqualified at Stage 2</td><td>High if LC bids alone</td><td>Verify HKBU record; partner with a qualifying PCO/faculty; or support rather than lead</td></tr>
+      <tr><td>Incumbent advantage (PolyU 2025+2026)</td><td>Loses up to 15 experience marks; hardest to out-score</td><td>High</td><td>Maximise the 85 “plan” marks incl. 20 innovation/ESG marks; differentiate on content</td></tr>
+      <tr><td>Venue cluster (11+ rooms, 500+ main) not available at HKBU</td><td>Higher cost / logistics risk</td><td>Medium</td><td>Confirm campus capacity early; consider external venue + shuttle; CUHK-style venue support model</td></tr>
+      <tr><td>Staffing: ~2–3 FTE-years diverted from LC core work</td><td>Service disruption; burnout</td><td>High without backfill</td><td>Budget backfill/secondments; make it a Centre-level project with senior sponsorship</td></tr>
+      <tr><td>Compressed bid window (~7 weeks to 29 Oct)</td><td>Weak, rushed quotation; no time for a credible design/implementation plan</td><td>Medium–High</td><td>Decide go/no-go immediately; reuse templates; partner early</td></tr>
+      <tr><td>Fixed price vs. variable attendance (4,000 target, free entry)</td><td>Financial loss if demand overshoots</td><td>Medium</td><td>Model catering/helpers per-head; cap registrations; contingency line</td></tr>
+      <tr><td>Content/network: 20 workshop topics covering 11 sub-themes, Chinese+English, international/Mainland/local balance</td><td>Weak programme; fails mandatory coverage</td><td>Medium</td><td>Leverage HKBU + partner networks; plan the 20 topics to the sub-theme map</td></tr>
+      <tr><td>Compliance: PDPO/GDPR for participant data; IP for recordings; accessibility</td><td>Legal/contractual</td><td>Medium</td><td>Standard consent + data plan in the bid; institutional review</td></tr>
+      <tr><td>Post-event tail to Dec 2027 (videos, package, eval)</td><td>Resource drag; 30% of payment at risk</td><td>Medium</td><td>Contract production early; schedule editing waves; dedicated officer</td></tr>
+    </table>
+  </div>
+</details>
+
+<!-- 10 QUESTIONS -->
+<details open>
+  <summary><span class="num">10</span><span class="t">Questions for discussion</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <p class="small">Grouped for the 14 Sep feedback to Joshua / Hok Chung. The starred ones block everything else.</p>
+
+    <div class="q">
+      <div class="qh">A. Go / no-go &amp; eligibility <span class="badge b-red">blocking</span></div>
+      <div class="why">Without a qualifying event, no plan matters.</div>
+      <ol>
+        <li>★ Do we (LC) — or HKBU as an institution — hold a qualifying international conference in the last 10 years: <b>multi-day, &gt;4,000 attendance, in (applied) linguistics or AI in education, with keynotes + parallel sessions + panels + pre/post workshops</b>?</li>
+        <li>★ Who could credibly be named as the <b>Event Management Team Leader</b> (multi-day &gt;4,000 event with stage/venue/catering/manpower, past 5 years)? Is there anyone in HKBU Events/Research Office?</li>
+        <li>If neither exists, is the Centre willing to <b>partner</b> (sub-contract) with a PCO / another faculty — or should we decline / support only?</li>
+        <li>Is there institutional (senior management / VPTL) appetite for HKBU to be the named Service Provider at all?</li>
+      </ol>
+    </div>
+
+    <div class="q">
+      <div class="qh">B. Competitive position</div>
+      <div class="why">PolyU hosted 2025 and 2026 and will likely bid.</div>
+      <ol>
+        <li>Are we willing to compete against the incumbent, or is a partnership/support role more realistic and valuable?</li>
+        <li>If we bid, who leads the <b>Design Plan</b> (30 marks) and the <b>Implementation Plan</b> (25 marks) — and what is our genuine differentiator (e.g., HKBU’s AI-in-teaching tools, GenAI CoP, research base)?</li>
+        <li>Can we assemble 3 credible <b>innovation proposals</b> (+15) and <b>ESG proposals</b> (+5) to capture the full 20 bonus marks?</li>
+      </ol>
+    </div>
+
+    <div class="q">
+      <div class="qh">C. Venue &amp; logistics</div>
+      <div class="why">The venue spec is unusually exacting.</div>
+      <ol>
+        <li>Does HKBU have, in one walkable cluster: a <b>500+</b> hall, <b>≥5</b> rooms for 100+, <b>≥5</b> rooms for 70+, and press/media rooms — for four days in late June 2027?</li>
+        <li>If not, do we go external (HKCEC/hotel) with shuttle service? Who bears that cost, and does it fit the price score?</li>
+        <li>June 2027 clashes: HKBU academic calendar, room availability, and other LC events — what is booked?</li>
+      </ol>
+    </div>
+
+    <div class="q">
+      <div class="qh">D. People &amp; capacity</div>
+      <div class="why">~2–3 FTE-years plus 55+ on-site staff.</div>
+      <ol>
+        <li>Who would be released from normal duties, and can the Centre fund <b>backfill/secondments</b>?</li>
+        <li>How do we recruit and train <b>40 student helpers</b> (with the mandatory joint training with SCOLAR)?</li>
+        <li>Do we buy in a PCO for delivery, or run it in-house? Either way, what is the minimum viable team?</li>
+      </ol>
+    </div>
+
+    <div class="q">
+      <div class="qh">E. Money</div>
+      <div class="why">No ceiling is published; price is 30% of the score.</div>
+      <ol>
+        <li>What is our value range — is the indicative <b>HK$3.6M–8.1M</b> realistic, and what would HKBU’s finance/accounting require for a fixed-price bid?</li>
+        <li>How do we price against the <b>30 × (lowest ÷ ours)</b> formula without losing money?</li>
+        <li>Who underwrites the risk of attendance &gt;4,000 and a 12-month tail to Dec 2027 (cash-flow 20/50/30)?</li>
+      </ol>
+    </div>
+
+    <div class="q">
+      <div class="qh">F. Content &amp; compliance</div>
+      <div class="why">All 11 sub-themes must be covered.</div>
+      <ol>
+        <li>Who maps the <b>20 workshop topics</b> to the 11 sub-themes, with a Chinese/English and international/Mainland/local balance?</li>
+        <li>Do we have (or can we recruit) the keynote and presenter network for June 2027?</li>
+        <li>Data protection (PDPO/GDPR), recording consent, accessibility, and IP for videos/resource package — who owns that compliance work?</li>
+      </ol>
+    </div>
+
+    <div class="q">
+      <div class="qh">G. Immediate logistics</div>
+      <div class="why">The clock is already running.</div>
+      <ol>
+        <li>The <b>briefing registration deadline (9 Sep) has passed</b> — can we still register for the 14 Sep 10:30 briefing (Appendix B)? If not, how do we get questions answered (written enquiries to <a href="mailto:eani@edb.gov.hk">eani@edb.gov.hk</a>)?</li>
+        <li>What is the expected content and stance of our <b>14 Sep feedback</b> to Joshua / Hok Chung — “not feasible”, “explore with partner”, or “prepare a bid”?</li>
+        <li>If we proceed, who is the single accountable owner and what is the milestone plan to 29 Oct?</li>
+      </ol>
+    </div>
+  </div>
+</details>
+
+<!-- APPENDIX -->
+<details>
+  <summary><span class="num">＋</span><span class="t">Appendix — sources &amp; source documents</span><span class="caret">▶</span></summary>
+  <div class="body">
+    <h3>Primary documents</h3>
+    <ul class="src">
+      <li>EDB Invitation to Quotation, Ref. EDB(EID/LE)/26-27/06 — “AIinLT 2027_Quotation Documents.pdf” (140 pp., attached to the 3 Sep 2026 email).</li>
+      <li>Email thread forwarded by Mable Chan (10 Sep 2026, 14:44) ← Hang Joshua Chan (3 Sep, 17:15) ← Albert Chau (3 Sep, 16:53) ← Kristy Wong, EDB (3 Sep, 14:15).</li>
+    </ul>
+    <h3>Web sources</h3>
+    <ul class="src">
+      <li>SCOLAR — Use of AI Summit (AIinLT), 2026 introduction: <a href="https://scolarhk.edb.hkedcity.net/en/use_of_ai_summit/use-of-ai-summit-introduction2026.html">scolarhk.edb.hkedcity.net</a></li>
+      <li>SCOLAR — AIinLT 2025 introduction: <a href="https://scolarhk.edb.hkedcity.net/en/use_of_ai_summit/use-of-ai-summit-introduction2025.html">scolarhk.edb.hkedcity.net</a></li>
+      <li>PolyU ENGL — “ENGL co-organises AIinLT 2026” (21 Jul 2026; &gt;5,000 attendances, 93 parallel sessions, 22 workshops): <a href="https://www.polyu.edu.hk/engl/news-and-events/news/2026/20260721---engl-co-organises-aiinlt-2026/">polyu.edu.hk</a></li>
+      <li>PolyU media release — “PolyU, EDB and SCOLAR co-organise AIinLT 2026” (21 Jun 2026): <a href="https://www.polyu.edu.hk/media/media-releases/2026/0621_polyu-edb-and-scolar-co-organise-aiinlt-2026/">polyu.edu.hk</a></li>
+      <li>GovHK press release — Digital Education Week 2026 opens with AIinLT (21 Jun 2026): <a href="https://www.info.gov.hk/gia/general/202606/21/P2026062100270.htm">info.gov.hk</a></li>
+      <li>GovHK press release — first Digital Education Week / AIinLT launch (4 Jul 2025): <a href="https://www.info.gov.hk/gia/general/202507/04/P2025070400769.htm">info.gov.hk</a></li>
+      <li>PolyU media release — AIinLT 2025 opening “nearly 1,000 attendees” (4 Jul 2025): <a href="https://www.polyu.edu.hk/en/media/media-releases/2025/0704_polyu-and-edb-co-organise-aiinlt/">polyu.edu.hk</a></li>
+      <li>HKCEC Congress Plus — semi-buffet lunch price: <a href="https://restaurants.hkcec.com/en/CongressPlus">restaurants.hkcec.com</a></li>
+      <li>CUHK Henry Cheng International Conference Centre — Conference Services: <a href="https://conferencecentre.cuhk.edu.hk/en/conference-services">conferencecentre.cuhk.edu.hk</a></li>
+      <li>Conference Alert — Hong Kong conferences 2026–27 (registration fee ranges): <a href="https://conferencealert.com/hong-kong">conferencealert.com</a></li>
+      <li>IAPCO — sector activity (2025): <a href="https://iapco.org">iapco.org</a> · Ex Ordo — conference budget/PCO pricing: <a href="https://exordo.com/blog/tips-for-creating-conference-budget-with-template">exordo.com</a></li>
+    </ul>
+    <p class="src">Prepared 11 September 2026 for internal HKBU Language Centre discussion. Cost/hour figures are evidence-based estimates for planning only, not quotations.</p>
+  </div>
+</details>
+
+<footer>
+  AIinLT 2027 — Quotation Briefing &amp; Feasibility Report · Quotation Ref. EDB(EID/LE)/26-27/06 · prepared 11 Sep 2026
+</footer>
+
+</div>
+</body>
+</html>
